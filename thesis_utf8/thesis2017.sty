@@ -1,0 +1,103 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \documentclass[a4paper, 11pt, uplatex]{jsbook} に挿入する. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{pLaTeX2e}
+\ProvidesPackage{thesis2017}
+
+
+% A4用紙 {210mm, 297mm}， 1inch = 25.4mm
+% 紙ファイルに卒論を綴じること前提で設定しました
+% 紙ファイルの綴じ幅: 18mm = 51pt
+% 余白（奇数ページ: odd） {上, 左, 右,下} = {40mm, 20+18mm, 30mm, 40mm} = {25.4 + 14.6mm, 25.4 + 12.6mm, 30mm, 40mm}
+% 余白（偶数ページ: even） {上, 左, 右,下} = {40mm, 30mm, 20+18mm, 40mm} = {25.4 + 14.6mm, 25.4 + 4.6mm, 30mm, 40mm}
+% ボディ {横, 縦} = {210 - 20 - 18 - 30 =142mm, 297 - 40 - 40 = 217mm}
+% 数えたら，日本語フォント（10.5pt）で 38行43列，日本語フォント（11pt）で 35行39列，（大須賀研テンプレは日本語フォント（11pt）で33行42列）
+% header, margin note は使わない前提です．footerはページ番号にのみ使います．
+\setlength{\marginparsep}{0pt}
+\setlength{\marginparwidth}{0pt}
+\setlength{\voffset}{14.6truemm}
+\setlength{\topmargin}{0pt}
+\setlength{\headheight}{0truept}
+\setlength{\headsep}{0truept}
+\setlength{\footskip}{25truept}
+\setlength{\oddsidemargin}{12.6truemm}
+\setlength{\evensidemargin}{4.6truemm}
+\setlength{\textwidth}{142truemm}
+\setlength{\textheight}{217truemm}
+
+
+% ページ下中央にページ番号を表示. 
+\makeatletter
+\def\ps@plain{\let\@mkboth\@gobbletwo
+   \let\ps@jpl@in\ps@plain
+   \let\@oddhead\@empty
+   \def\@oddfoot{\reset@font\hfil-- \thepage\ --\hfil}%
+   \let\@evenhead\@empty
+    \let\@evenfoot\@oddfoot}
+\def\ps@plainfoot{%
+  \let\@mkboth\@gobbletwo
+  \let\@oddhead\@empty
+  \def\@oddfoot{\reset@font\hfil-- \thepage\ --\hfil}%
+  \let\@evenhead\@empty
+  \let\@evenfoot\@oddfoot}
+\makeatother
+\pagestyle{plain}
+
+
+% 通し番号の参照
+\renewcommand{\figurename}{Fig.\ }
+\renewcommand{\tablename}{Table\ }
+\def\fnum@figure{\textbf{Fig.\ }\thefigure}
+\def\fnum@table{\textbf{Table\ }\thetable}
+\def\figlab#1{\label{fig:#1}}
+\def\figref#1{\textbf{\figurename\ref{fig:#1}}}
+\def\tablab#1{\label{tab:#1}}
+\def\tabref#1{\textbf{\tablename\ref{tab:#1}}}
+\def\eqnlab#1{\label{eqn:#1}}
+\def\eqnref#1{(\ref{eqn:#1})\ 式}
+\def\chaplab#1{\label{chap:#1}}
+\def\chapref#1{\textbf{第\ \ref{chap:#1}\ 章}}
+\def\seclab#1{\label{sec:#1}}
+\def\secref#1{\textbf{\ref{sec:#1}}}
+\def\subseclab#1{\label{subsec:#1}}
+\def\subsecref#1{\textbf{\ref{subsec:#1}}}
+
+
+% chapter を修正
+\def\oreChapterSpace{6truemm}
+\newcommand{\setchapterspace}[1]{
+  \def\oreChapterSpace{#1}
+}
+\makeatletter
+\def\@makechapterhead#1{%
+  \vspace*{0.1\Cvs}% $B2$J8$O(B50pt
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \Huge\headfont \@chapapp\thechapter\@chappos
+%        \par\nobreak
+%        \vskip \Cvs % $B2$J8$O(B20pt
+      \hspace{\oreChapterSpace}
+     \fi
+    \fi
+    \interlinepenalty\@M
+    \Huge \headfont #1\par\nobreak
+    \vskip 2\Cvs}} % $B2$J8$O(B40pt    
+\def\@schapter#1{%
+  \chaptermark{#1}%
+  \if@twocolumn
+    \@topnewpage[\@makeschapterhead{#1}]%
+  \else
+    \@makeschapterhead{#1}\@afterheading
+  \fi}
+\def\@makeschapterhead#1{%
+  \vspace*{2\Cvs}% 
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \Huge \headfont #1\par\nobreak
+    \vskip 3\Cvs}} % 
+\makeatother
+
+
