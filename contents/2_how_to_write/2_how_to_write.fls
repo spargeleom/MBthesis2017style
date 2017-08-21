@@ -1,0 +1,7 @@
+PWD /Users/Yuji/Documents/yuji/20_Master/10_Lab/35_template/MBthesis2017_project/thesis_utf8/contents/2_how_to_write
+INPUT /usr/local/texlive/2015/texmf.cnf
+INPUT /usr/local/texlive/2015/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2015/texmf.cnf
+INPUT /usr/local/texlive/2015/texmf-var/web2c/euptex/uplatex.fmt
+INPUT 2_how_to_write.tex
+OUTPUT 2_how_to_write.log

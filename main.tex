@@ -1,0 +1,64 @@
+\documentclass[a4paper,11pt, uplatex,openany]{jsbook}
+
+%%%% Packages
+%\usepackage{fancyhdr}
+\usepackage{thesis2017} 
+
+%
+%% 以下, 必要ないものは消してください. 
+%\usepackage{fancyhdr}
+\usepackage{layout} % 第3章中の \layout のためだけなので, 論文執筆には不要. 
+\usepackage[dvipdfmx]{hyperref} % 目次をクリックするとそのページに飛ぶ.
+\usepackage{pxjahyper} % hyperrefを使った時に文字化けする場合は使う.
+\usepackage{amsmath} % 数式扱うなら必須.
+\usepackage{ascmac} % 文章の枠囲み. 論文では不要だと思う.  
+\usepackage[dvipdfmx]{xcolor} % 文字に色をつける. これも不要. 
+\usepackage[dvipdfmx]{graphicx} % 図の挿入に必要. 
+\usepackage[skip=5pt]{caption} % あった方がいい. 
+\captionsetup{labelfont=bf} % あった方がいい. 
+\usepackage[
+  labelformat=simple, 
+  list=true, 
+  listformat=simple]{subcaption} % 図3.2(a)的なことをする場合は必要
+  \renewcommand\thesubfigure{(\alph{subfigure})} % 図3.2(a)的なことをする場合は必要
+ 
+
+%%%% Settings
+\bibliographystyle{junsrt}
+
+%%%% \def: Definitions
+\def\diff{\mathrm{d}}
+\def\BibTeX{B{\small IB}\TeX}
+
+
+
+%%%%%%%% Document
+\begin{document}
+
+%
+%前書き
+\frontmatter
+\clearpage
+\input{./contents/0_frontpart/0_frontpart.tex} %タイトル・概要・目次など
+
+%本文
+\mainmatter
+\input{./contents/1_introduction/1_introduction.tex} %第1章
+\input{./contents/2_how_to_write/2_how_to_write.tex} %第2章
+\input{./contents/3_latex_knowhow/3_latex_knowhow.tex} %第3章
+\input{./contents/4_end/4_end.tex} %第4章
+
+\input{./contents/9_bibliography/9_bibliography.tex} %参考文献
+
+%付録
+\appendix
+\input{./contents/A_eom/A_eom.tex} %付録A
+
+%
+%後書き
+\backmatter
+%謝辞
+\input{./contents/Z_thanks/Z_thanks.tex}
+
+
+\end{document}

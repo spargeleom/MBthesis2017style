@@ -1,0 +1,67 @@
+% タイトルページ
+\begin{titlepage}
+\centering
+\vspace*{40truept}
+{\Large 平成27年度 卒業研究報告書} \\ % 年度
+\vspace{40truept} 
+ {\Large 題目} \\
+ \vspace{10truept} 
+{\LARGE \textbf{タイトル}}\\ % タイトル
+\vspace{10truept}
+{\Large --- サブタイトル ---}\\ % サブタイトル. なければコメントアウト
+\vspace{120truept}
+{\Large 指導教員}\\ %
+ \vspace{10truept} 
+{\Large 石川 将人 教授}\\ % 指導教員
+\vspace{60truept}
+{\Large 大阪大学 工学部 応用理工学科}\\ % 学科
+ \vspace{10truept} 
+{\Large 学籍番号 08B12***}\\ % 学籍番号
+\vspace{20truept}
+{\LARGE 名前}\\ % 著者
+\vspace{80truept}
+{\Large 2016年2月xx日} % 提出日
+\end{titlepage}
+\cleardoublepage
+% アブストラクト
+\chapter*{\huge 概要}
+\vskip2\Cvs
+
+卒業論文を\LaTeX で書くときに参考になればと思い作りました. なぜかコンパイルできない, Wordみたいな微調整ができなくて体裁が整わないなどの``\LaTeX あるある''で, 無駄に時間を費やさないように, 本来時間を割くべきところにきちんと時間を割けるようにしましょう. 
+
+本テンプレートは使用を強要するものではありません. すでにShareフォルダ内に, 末岡先生が作られた大須賀研用のテンプレがありますのでそれを用いてもらっても構いません. あるいは自分で論文体裁を整えてもらっても構いません. 要するに論文が書ければそれでいいのです. 
+
+本テンプレートは完成度は高くないです. より多くの知識や経験を今後に生かすため, 気がついたことがあれば随時加筆修正を行ってくださると幸いです. また, \chapref{論文の書き方}と\chapref{LaTeX で論文を書くときのノウハウ}に書いてある内容なんかも参考にしてもらえればと思います. 
+
+\begin{table}[h]
+\caption*{Specification of this template}
+\tablab{Specification of this template}
+\centering
+\begin{tabular}{ll}\hline\hline
+最終更新日 & \today\\\hline
+本テンプレート保存場所 & \verb|/knight/share/テンプレート/LaTeX/thesis_utf8|\\\hline
+動作確認した\TeX 環境 & TeX Live 2015: ptex2pdf. Mac OSX, Windows7共に確認. \\\hline
+\end{tabular}
+\end{table}%
+
+
+
+
+\section*{\huge Abstract}
+\vskip2\Cvs
+This paper discusses ...
+%
+%
+
+
+\newpage
+
+%目次
+\tableofcontents   %目次
+\thispagestyle{plain}
+%\newpage
+\listoffigures %図目次 図が少なければいらないかも
+%\newpage
+\listoftables %表目次 表が少なければいらないかも
+%\newpage
+

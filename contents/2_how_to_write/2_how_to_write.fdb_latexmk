@@ -1,0 +1,11 @@
+# Fdb version 3
+["dvipdf"] 0 "2_how_to_write.dvi" "2_how_to_write.pdf" "2_how_to_write" 0
+  "2_how_to_write.dvi" 0 -1 0 "latex"
+  (generated)
+  "2_how_to_write.pdf"
+["latex"] 0 "2_how_to_write.tex" "2_how_to_write.dvi" "2_how_to_write" 0
+  "2_how_to_write.aux" 1503304234 8 a94a2480d3289e625eea47cd1b285758 ""
+  "2_how_to_write.tex" 0 -1 0 ""
+  (generated)
+  "2_how_to_write.log"
+  "2_how_to_write.dvi"
