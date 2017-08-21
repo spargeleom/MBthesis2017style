@@ -28,21 +28,25 @@
 
 
 % ページ下中央にページ番号を表示. 
-\makeatletter
-\def\ps@plain{\let\@mkboth\@gobbletwo
-   \let\ps@jpl@in\ps@plain
-   \let\@oddhead\@empty
-   \def\@oddfoot{\reset@font\hfil-- \thepage\ --\hfil}%
-   \let\@evenhead\@empty
-    \let\@evenfoot\@oddfoot}
-\def\ps@plainfoot{%
-  \let\@mkboth\@gobbletwo
-  \let\@oddhead\@empty
-  \def\@oddfoot{\reset@font\hfil-- \thepage\ --\hfil}%
-  \let\@evenhead\@empty
-  \let\@evenfoot\@oddfoot}
-\makeatother
-\pagestyle{plain}
+%fancyhdr.styを使用しない場合はこちらを使用
+%\makeatletter
+%\def\ps@plain{\let\@mkboth\@gobbletwo
+%   \let\ps@jpl@in\ps@plain
+%   \bigin{flushleft}
+%   \let\@oddhead\leftmark
+%   \end{flushleft}
+%   \def\@oddfoot{\reset@font\hfil-- \thepage\ --\hfil}%
+%   \let\@evenhead\@empty
+%    \let\@evenfoot\@oddfoot}
+%\def\ps@plainfoot{%
+%  \let\@mkboth\@gobbletwo
+%  \let\@oddhead\@empty
+%  \def\@oddfoot{\reset@font\hfil-- \thepage\ --\hfil}%
+%  \let\@evenhead\@empty
+%  \let\@evenfoot\@oddfoot}
+%\makeatother
+%\pagestyle{plain}
+%\def\oddhead{\reset\leftmark}
 
 
 % 通し番号の参照
@@ -64,40 +68,56 @@
 \def\subsecref#1{\textbf{\ref{subsec:#1}}}
 
 
-% chapter を修正
-\def\oreChapterSpace{6truemm}
-\newcommand{\setchapterspace}[1]{
-  \def\oreChapterSpace{#1}
-}
-\makeatletter
-\def\@makechapterhead#1{%
-  \vspace*{0.1\Cvs}% $B2$J8$O(B50pt
-  {\parindent \z@ \raggedright \normalfont
-    \ifnum \c@secnumdepth >\m@ne
-      \if@mainmatter
-        \Huge\headfont \@chapapp\thechapter\@chappos
-%        \par\nobreak
-%        \vskip \Cvs % $B2$J8$O(B20pt
-      \hspace{\oreChapterSpace}
-     \fi
-    \fi
-    \interlinepenalty\@M
-    \Huge \headfont #1\par\nobreak
-    \vskip 2\Cvs}} % $B2$J8$O(B40pt    
-\def\@schapter#1{%
-  \chaptermark{#1}%
-  \if@twocolumn
-    \@topnewpage[\@makeschapterhead{#1}]%
-  \else
-    \@makeschapterhead{#1}\@afterheading
-  \fi}
-\def\@makeschapterhead#1{%
-  \vspace*{2\Cvs}% 
-  {\parindent \z@ \raggedright
-    \normalfont
-    \interlinepenalty\@M
-    \Huge \headfont #1\par\nobreak
-    \vskip 3\Cvs}} % 
-\makeatother
+%% chapter を修正
+%\def\oreChapterSpace{6truemm}
+%\newcommand{\setchapterspace}[1]{
+%  \def\oreChapterSpace{#1}
+%}
+%\makeatletter
+%\def\@makechapterhead#1{%
+%  \vspace*{0.1\Cvs}% $B2$J8$O(B50pt
+%  {\parindent \z@ \raggedright \normalfont
+%    \ifnum \c@secnumdepth >\m@ne
+%      \if@mainmatter
+%        \Huge\headfont \@chapapp\thechapter\@chappos
+%%        \par\nobreak
+%%        \vskip \Cvs % $B2$J8$O(B20pt
+%      \hspace{\oreChapterSpace}
+%     \fi
+%    \fi
+%    \interlinepenalty\@M
+%    \Huge \headfont #1\par\nobreak
+%    \vskip 2\Cvs}} % $B2$J8$O(B40pt    
+%\def\@schapter#1{%
+%  \chaptermark{#1}%
+%  \if@twocolumn
+%    \@topnewpage[\@makeschapterhead{#1}]%
+%  \else
+%    \@makeschapterhead{#1}\@afterheading
+%  \fi}
+%\def\@makeschapterhead#1{%
+%  \vspace*{2\Cvs}% 
+%  {\parindent \z@ \raggedright
+%    \normalfont
+%    \interlinepenalty\@M
+%    \Huge \headfont #1\par\nobreak
+%    \vskip 3\Cvs}} % 
+%\makeatother
+%
+%
+
+%%ヘッダーとページ番号を追加
+%%偶数ページ(左ページ)の左上に章名，奇数ページの右上に節名を記述
+%%fancyhdr.styが必要https://www.ctan.org/pkg/fancyhdr
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\fancyhead[LE]{\leftmark \text{章}}
+%\fancyhead[LO,RE]{}
+%\fancyhead[RO]{\rightmark}
+\voffset = 10truemm
+ \headsep = 5pt
+\lhead[\leftmark]{}
+\rhead[]{\rightmark}
+
 
 
